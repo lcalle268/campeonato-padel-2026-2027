@@ -355,7 +355,10 @@ clasificacion_final <- clasificacion_auto %>%
       TRUE ~ str_to_sentence(GRUPO)
     )
   ) %>%
-  arrange(GRUPO, CLASIFICACION) %>%
+  arrange(
+    match(GRUPO, c("Mediocre alto", "Mediocre medio", "Mediocre bajo")),
+    CLASIFICACION
+  ) %>%
   rename(
     `P. JUGADOS` = PJ,
     `P. GANADOS` = PG,
